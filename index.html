@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>RubicCage</title>
+  <link rel="stylesheet" href="./base.css">
+  <script type="text/javascript" src="./socket.io/socket.io.js"></script>
+</head>
+<body>
+  <table>
+    <!-- ↓矢印 -->
+    <tr>
+      <td><img src = "./img/blank.gif"></td>
+      <td><img src = "./img/down.gif" id = "down_left"></td>
+      <td><img src = "./img/down.gif" id = "down_center"></td>
+      <td><img src = "./img/down.gif" id = "down_right"></td>
+      <td><img src = "./img/blank.gif"></td>
+    </tr>
+    <!-- 1段目 -->
+    <tr>
+      <td><img src = "./img/left.gif" id = "left1"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage11"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage12"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage13"></td>
+      <td><img src = "./img/right.gif" id = "right1"></td>
+    </tr>
+    <!-- 2段目 -->
+    <tr>
+      <td><img src = "./img/left.gif" id = "left2"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage21"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage22"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage23"></td>
+      <td><img src = "./img/right.gif" id = "right2"></td>
+    </tr>
+    <!-- 3段目 -->
+    <tr>
+      <td><img src = "./img/left.gif" id = "left3"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage31"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage32"></td>
+      <td><img src = "./img/blank.gif" class="cage" id="cage33"></td>
+      <td><img src = "./img/right.gif" id = "right3"></td>
+    </tr>
+    <!-- その他操作 -->
+    <tr>
+      <td><img src = "./img/hidari.png" id="hidari"></td>
+      <td><img src = "./img/blank.gif"></td>
+      <td><img src = "./img/rotate.gif" id="rotate"></td>
+      <td><img src = "./img/blank.gif"></td>
+      <td><img src = "./img/migi.png" id="migi"></td>
+    </tr>
+  </table>
+  
+  <script type="text/javascript">
+        let socket = io.connect();
+        let down_left_action = document.getElementById('down_left');
+        let down_center_action = document.getElementById('down_center');
+        let down_right_action = document.getElementById('down_right');
+        let left1_action = document.getElementById('left1');
+        let cage11_btn = document.getElementById('cage11');
+        let cage12_btn = document.getElementById('cage12');
+        let cage13_btn = document.getElementById('cage13');
+        let right1_action = document.getElementById('right1');
+        let left2_action = document.getElementById('left2');
+        let cage21_btn = document.getElementById('cage21');
+        let cage22_btn = document.getElementById('cage22');
+        let cage23_btn = document.getElementById('cage23');
+        let right2_action = document.getElementById('right2');
+        let left3_action = document.getElementById('left3');
+        let cage31_btn = document.getElementById('cage31');
+        let cage32_btn = document.getElementById('cage32');
+        let cage33_btn = document.getElementById('cage33');
+        let right3_action = document.getElementById('right3');
+        let hidari_action = document.getElementById('hidari');
+        let rotate_action = document.getElementById('rotate');
+        let migi_action = document.getElementById('migi');
+
+        // socket.on("server_to_client", function(data){appendMsg(data.value)});
+    
+        function butonClick(e){
+          var btn=e.target;
+          if(window.confirm("手を確定します")){
+            socket.emit("client_to_server", {value : message});
+          }
+        }
+        
+        down_left_action.addEventListener('click', butonClick);
+        down_center_action.addEventListener('click', butonClick);
+        down_right_action.addEventListener('click', butonClick);
+        left1_action.addEventListener('click', butonClick);
+        right1_action.addEventListener('click', butonClick);
+        left2_action.addEventListener('click', butonClick);
+        right2_action.addEventListener('click', butonClick);
+        left3_action.addEventListener('click', butonClick);
+        right3_action.addEventListener('click', butonClick);
+        hidari_action.addEventListener('click', butonClick);
+        rotate_action.addEventListener('click', butonClick);
+        migi_action.addEventListener('click', butonClick);
+
+        // $("form").submit(function(e){
+        //     var message = $("#msgForm").val();
+        //     $("#msgForm").val('');
+        //     socket.emit("client_to_server", {value : message});
+        //     e.preventDefault();
+        // });
+  </script>
+</body>
+</html>

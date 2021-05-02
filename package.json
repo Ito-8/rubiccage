@@ -1,0 +1,22 @@
+{
+  "name": "rubiccage",
+  "version": "1.0.0",
+  "description": "GWの暇つぶし\r 更新テスト\r プルリクエスト？\r testes1 ブランチ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ito-8/rubiccage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ito-8/rubiccage/issues"
+  },
+  "homepage": "https://github.com/Ito-8/rubiccage#readme",
+  "dependencies": {
+    "socket.io": "^4.0.1"
+  }
+}

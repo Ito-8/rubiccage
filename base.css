@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/*============================================
+全般的なスタイル
+============================================*/
+* {
+	margin:0; padding:0; 		/*全要素のマージン・パディングをリセット*/
+}
+
+table {border-collapse:collapse;		/*セル同士の間に隙間を空けない*/}
+td{line-height: 0;}
+.cage {border-style:solid; border-color:black;}
