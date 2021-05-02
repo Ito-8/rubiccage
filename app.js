@@ -30,11 +30,17 @@ var server = new http.createServer(function(req, res) {
 }).listen(3000);
 
 var io = socketio(server);
+var cagelist = [
+  ["./img/red.gif","./img/yellow.gif","./img/blank.gif","./img/blue.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif"],
+  ["./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif"],
+  ["./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif"]
+];
+
  
 io.sockets.on('connection', function(socket) {
     socket.on('client_to_server', function(data) {
-        console.log(data);
-        console.log(data.value);
-        io.sockets.emit('server_to_client', {value : data.value});
+      if(data = "cage_reload"){
+        io.sockets.emit('server_to_client', cagelist);
+      }
     });
 });
