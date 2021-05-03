@@ -170,31 +170,21 @@ io.sockets.on('connection', function(socket) {
         case 'right2':
           tmp1 = cagelist[2][0];
           tmp2 = cagelist[2][1];
-          cagelist[2][1]=cagelist[0][7];
-          cagelist[2][0]=cagelist[0][6];
-          cagelist[2][7]=cagelist[0][5];
-          cagelist[2][6]=cagelist[0][4];
-          cagelist[2][5]=cagelist[0][3];
-          cagelist[2][4]=cagelist[0][2];
+          cagelist[2][1]=cagelist[2][7];
+          cagelist[2][0]=cagelist[2][6];
+          cagelist[2][7]=cagelist[2][5];
+          cagelist[2][6]=cagelist[2][4];
+          cagelist[2][5]=cagelist[2][3];
+          cagelist[2][4]=cagelist[2][2];
           cagelist[2][3]=tmp2;
           cagelist[2][2]=tmp1;
-          gravity_phase();
+          gravity_phase(cagelist);
           io.sockets.emit('server_to_client', {cagelist, cube});
           break;                      
         case 'reload':
           io.sockets.emit('server_to_client', {cagelist, cube});
           break;
         case 'rotate':
-          // let tmprow0 = cagelist[0].slice();
-          // let tmprow1 = cagelist[1].slice();
-          // let tmprow2 = cagelist[2].slice();
-          // tmprow0.reverse();
-          // tmprow1.reverse();
-          // tmprow2.reverse();
-          // cagelist[0] = tmprow2.slice();
-          // cagelist[1] = tmprow1.slice();
-          // cagelist[2] = tmprow0.slice();
-
           let cagelisttmp = [
             [cagelist[2][2], cagelist[2][1], cagelist[2][0], cagelist[2][7], cagelist[2][6], cagelist[2][5], cagelist[2][4], cagelist[2][3],],
             [cagelist[1][2], cagelist[1][1], cagelist[1][0], cagelist[1][7], cagelist[1][6], cagelist[1][5], cagelist[1][4], cagelist[1][3],],
