@@ -74,55 +74,196 @@
       let reset_action = document.getElementById('reset');
       let rotate_action = document.getElementById('rotate');
       let migi_action = document.getElementById('migi');
-      let cagelist;
-
-      socket.on("server_to_client", function(data){
-        cagelist = data;
-        cage00.src=cagelist[0][0];
-        cage01.src=cagelist[0][1];
-        cage02.src=cagelist[0][2];
-        cage10.src=cagelist[1][0];
-        cage11.src=cagelist[1][1];
-        cage12.src=cagelist[1][2];
-        cage20.src=cagelist[2][0];
-        cage21.src=cagelist[2][1];
-        cage22.src=cagelist[2][2];
-      });
-
-      function butonClick(e){
-        if(window.confirm("手を確定します")){
-          socket.emit("client_to_server", {value : e.target.id});
+      var cagelist;
+      var cube;
+      let sokumen_number = 1;
+      
+      function men(sokumen){
+        switch(sokumen){
+          case 1 :
+            cage00.src = cagelist[0][0];
+            cage01.src = cagelist[0][1];
+            cage02.src = cagelist[0][2];
+            cage10.src = cagelist[1][0];
+            cage11.src = cagelist[1][1];
+            cage12.src = cagelist[1][2];
+            cage20.src = cagelist[2][0];
+            cage21.src = cagelist[2][1];
+            cage22.src = cagelist[2][2];
+            break;
+          case 2 :
+            cage00.src = cagelist[0][2];
+            cage01.src = cagelist[0][3];
+            cage02.src = cagelist[0][4];
+            cage10.src = cagelist[1][2];
+            cage11.src = cagelist[1][3];
+            cage12.src = cagelist[1][4];
+            cage20.src = cagelist[2][2];
+            cage21.src = cagelist[2][3];
+            cage22.src = cagelist[2][4];
+            break;
+          case 3 :
+            cage00.src = cagelist[0][4];
+            cage01.src = cagelist[0][5];
+            cage02.src = cagelist[0][6];
+            cage10.src = cagelist[1][4];
+            cage11.src = cagelist[1][5];
+            cage12.src = cagelist[1][6];
+            cage20.src = cagelist[2][4];
+            cage21.src = cagelist[2][5];
+            cage22.src = cagelist[2][6];
+            break;
+          case 4 :
+            cage00.src = cagelist[0][6];
+            cage01.src = cagelist[0][7];
+            cage02.src = cagelist[0][0];
+            cage10.src = cagelist[1][6];
+            cage11.src = cagelist[1][7];
+            cage12.src = cagelist[1][0];
+            cage20.src = cagelist[2][6];
+            cage21.src = cagelist[2][7];
+            cage22.src = cagelist[2][0];
+            break;  
+          default:         
         }
       }
-      
-      function cage_reload(e){
-        socket.emit("client_to_server", "cage_reload");
+
+      // データ受信
+      socket.on("server_to_client", function(data){
+        cagelist = data.cagelist;
+        cube = data.cube;
+        men(sokumen_number);
+      });
+
+      // イベント起動関数
+
+      function downclick(e){
+        if(sokumen_number == 1){
+          if(e.target.id == "down_left"){
+            if(cagelist[0][0] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }else if(e.target.id == "down_center"){
+            if(cagelist[0][1] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }else if(e.target.id == "down_right"){
+            if(cagelist[0][2] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }
+        }else if(sokumen_number ==  2){
+          if(e.target.id == "down_left"){
+            if(cagelist[0][2] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }else if(e.target.id == "down_center"){
+            if(cagelist[0][3] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }else if(e.target.id == "down_right"){
+            if(cagelist[0][4] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }
+        }else if(sokumen_number == 3){
+          if(e.target.id == "down_left"){
+            if(cagelist[0][4] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }else if(e.target.id == "down_center"){
+            if(cagelist[0][5] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }else if(e.target.id == "down_right"){
+            if(cagelist[0][6] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }
+        }else if(sokumen_number == 4){
+          if(e.target.id == "down_left"){
+            if(cagelist[0][6] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }else if(e.target.id == "down_center"){
+            if(cagelist[0][7] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }else if(e.target.id == "down_right"){
+            if(cagelist[0][0] != "./img/blank.gif"){
+              window.alert = "この列は埋まっています";
+              return;
+            }
+          }
+        }
+        let input_color = window.prompt("blue, green, purple, orange, red, yellow のいずれかを入力してください。");
+        switch(input_color){
+          case 'blue':
+          case 'green':
+          case 'purple' :
+          case 'orange':
+          case 'red':
+          case 'yellow' :
+            if(cube[input_color] == 0){window.alert(input_color.concat("はもうありません。")); break;}
+            socket.emit("client_to_server", {ope : "down", color : input_color, e_target : e.target.id, sokumen : sokumen_number});
+            break;
+          default:
+            window.alert("入力した色が間違っています。再度入力してください。");
+        }
+      }
+
+      function cage_reload(e) {socket.emit("client_to_server", {ope: "reload"});}
+
+      function cage_move (e)  {
+        if(window.confirm("確定します。良いですか？")){
+          socket.emit("client_to_server", {ope : e.target.id});
+        }
+      }
+
+      function hidari_mawasu(){
+        sokumen_number = sokumen_number -1;
+        if (sokumen_number == 0){ sokumen_number = 4 }
+        men(sokumen_number);
+      }
+
+      function cage_reset(e)  {
+        if(window.confirm("初期化しますか？")){
+          socket.emit("client_to_server", { ope: e.target.id });
+        }
       }
 
       function migi_mawasu(){
-        cage00.src=cagelist[0][3];
+        sokumen_number = sokumen_number +1;
+        if (sokumen_number == 5){ sokumen_number = 1 }
+        men(sokumen_number);
       }
 
+      // イベント登録
       window.onload= cage_reload;
-      down_left_action.addEventListener('click', butonClick);
-      down_center_action.addEventListener('click', butonClick);
-      down_right_action.addEventListener('click', butonClick);
-      left0_action.addEventListener('click', butonClick);
-      right0_action.addEventListener('click', butonClick);
-      left1_action.addEventListener('click', butonClick);
-      right1_action.addEventListener('click', butonClick);
-      left2_action.addEventListener('click', butonClick);
-      right2_action.addEventListener('click', butonClick);
-      hidari_action.addEventListener('click', butonClick);
-      rotate_action.addEventListener('click', butonClick);
+      down_left_action.addEventListener('click', downclick);
+      down_center_action.addEventListener('click', downclick);
+      down_right_action.addEventListener('click', downclick);
+      left0_action.addEventListener('click', cage_move);
+      right0_action.addEventListener('click', cage_move);
+      left1_action.addEventListener('click', cage_move);
+      right1_action.addEventListener('click', cage_move);
+      left2_action.addEventListener('click', cage_move);
+      right2_action.addEventListener('click', cage_move);
+      hidari_action.addEventListener('click', hidari_mawasu);
+      reset_action.addEventListener('click', cage_reset);
+      rotate_action.addEventListener('click', cage_move);
       migi_action.addEventListener('click', migi_mawasu);
-
-      // $("form").submit(function(e){
-      //     var message = $("#msgForm").val();
-      //     $("#msgForm").val('');
-      //     socket.emit("client_to_server", {value : message});
-      //     e.preventDefault();
-      // });
     </script>
   </body>
 </html>
