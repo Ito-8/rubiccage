@@ -211,12 +211,9 @@ io.sockets.on('connection', function(socket) {
             ["./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif","./img/blank.gif"]
           ];
           cube = {blue : 4, green : 4, purple : 4, orange : 4, red : 4, yellow : 4};
-
-          }
           io.sockets.emit('server_to_client', {cagelist, cube});
           break;
         default:
-          break;
       }
     });
 });
