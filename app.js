@@ -58,7 +58,6 @@ let tmp2;
 
 io.sockets.on('connection', function(socket) {
     socket.on('client_to_server', function(data) {
-      console.log(data);
       switch(data.ope){
         case 'down':
           if(data.sokumen == 1){
