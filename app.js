@@ -28,7 +28,7 @@ var server = new http.createServer(function(req, res) {
         res.end(data, 'UTF-8');
       }
     });
-}).listen(3000);
+}).listen(process.env.PORT || 3000);
 
 var io = socketio(server);
 var cagelist = [
