@@ -141,68 +141,68 @@
         if(sokumen_number == 1){
           if(e.target.id == "down_left"){
             if(cagelist[0][0] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }else if(e.target.id == "down_center"){
             if(cagelist[0][1] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }else if(e.target.id == "down_right"){
             if(cagelist[0][2] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }
         }else if(sokumen_number ==  2){
           if(e.target.id == "down_left"){
             if(cagelist[0][2] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }else if(e.target.id == "down_center"){
             if(cagelist[0][3] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }else if(e.target.id == "down_right"){
             if(cagelist[0][4] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }
         }else if(sokumen_number == 3){
           if(e.target.id == "down_left"){
             if(cagelist[0][4] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }else if(e.target.id == "down_center"){
             if(cagelist[0][5] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }else if(e.target.id == "down_right"){
             if(cagelist[0][6] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }
         }else if(sokumen_number == 4){
           if(e.target.id == "down_left"){
             if(cagelist[0][6] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }else if(e.target.id == "down_center"){
             if(cagelist[0][7] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }else if(e.target.id == "down_right"){
             if(cagelist[0][0] != "./img/blank.gif"){
-              window.alert = "この列は埋まっています";
+              window.alert ("この列は埋まっています。");
               return;
             }
           }
@@ -218,7 +218,7 @@
             if(cube[input_color] == 0){window.alert(input_color.concat("はもうありません。")); break;}
             socket.emit("client_to_server", {ope : "down", color : input_color, e_target : e.target.id, sokumen : sokumen_number});
             break;
-          default:
+          default :
             window.alert("入力した色が間違っています。再度入力してください。");
         }
       }
