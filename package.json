@@ -4,7 +4,8 @@
   "description": "GWの暇つぶし\r 更新テスト\r プルリクエスト？\r testes1 ブランチ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
