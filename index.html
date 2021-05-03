@@ -49,6 +49,12 @@
         <td><img src = "./img/migi.png" id="migi"></td>
       </tr>
     </table>
+    <hr>
+    <div id = "cubekazu">
+      <p></p>
+
+
+    </div>
     
     <script type="text/javascript">
       let socket = io.connect();
@@ -133,6 +139,8 @@
         cagelist = data.cagelist;
         cube = data.cube;
         men(sokumen_number);
+        let element = document.getElementById('cubekazu');
+            element.textContent = "blue:".concat(cube["blue"], " green:",cube["green"], " purple:", cube["purple"]," orange:",cube["orange"], " red:", cube["red"]," yellow:",cube["yellow"]);
       });
 
       // イベント起動関数
